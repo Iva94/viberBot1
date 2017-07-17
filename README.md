@@ -6,3 +6,5 @@ Team members:
 Almir Hamza
 
 Nejla Smajic
+
+Ivana Jovovic
