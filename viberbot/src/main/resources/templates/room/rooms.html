@@ -7,14 +7,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="rooms.css">
 </head>
 
 
 <body>
-    <tr th:each="room : ${rooms}">
+  <table class="table">
+  
+  <thead>
+      <tr>
+        <th><h4>Room</h4></th>
+        <th><h4>Name</h4></th>
+        <th><h4>Number</h4></th>
+        <th><h4>Action</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr th:each="room : ${rooms}">
+	   
 	    <td th:text="${room.id}">1</td>
+	   
 	    <td><a href="#" th:text="${room.number}"></a></td>
+	   
 	    <td th:text="${room.name}"></td>
+	    
+	    <td><button type="button" class="btn btn-primary btn-md but">Delete</button> </td>
+	    
+	    
 	</tr>
+    </tbody>
+   
+ </table>
 </body>
 </html>
