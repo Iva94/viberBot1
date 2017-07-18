@@ -22,16 +22,15 @@ public class Reservation implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@ManyToOne(targetEntity = User.class)
-	@JoinColumn(name = "user")
-	private User user;
+	@ManyToOne(targetEntity = AppUser.class)
+	@JoinColumn(name = "appuser", referencedColumnName = "id")
+	private AppUser appuser;
 	
 	@ManyToOne(targetEntity = Room.class)
-	@JoinColumn(name = "room")
+	@JoinColumn(name = "room", referencedColumnName = "id")
 	private Room room;
 	
 	private Date date;
-	
 	private Time time;
 	
 	public Integer getId() {
@@ -42,12 +41,12 @@ public class Reservation implements Serializable{
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public AppUser getUser() {
+		return appuser;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(AppUser user) {
+		this.appuser = user;
 	}
 
 	public Room getRoom() {
@@ -78,10 +77,9 @@ public class Reservation implements Serializable{
 		
 	}
 
-	public Reservation(Integer id, User user, Room room, Date date, Time time){
-		super();
+	public Reservation(Integer id, AppUser user, Room room, Date date, Time time){
 		this.id = id;
-		this.user = user;
+		this.appuser = user;
 		this.room = room;
 		this.date = date;
 		this.time = time;

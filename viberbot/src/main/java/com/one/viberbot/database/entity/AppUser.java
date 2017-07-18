@@ -11,23 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable {
+@Table(name = "appuser")
+public class AppUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
 	private Integer id;
 	
-	
 	private String viberId;
-	
-	
 	private String name;
-	
 	private Boolean subscribe;
 
+	
 	public Integer getId() {
 		return id;
 	}
@@ -60,12 +56,11 @@ public class User implements Serializable {
 		this.subscribe = subscribe;
 	}
 	
-	public User(){
+	public AppUser(){
 		
 	}
 	
-	public User(Integer id, String viberId, String name, Boolean subscribe){
-		super();
+	public AppUser(Integer id, String viberId, String name, Boolean subscribe){
 		this.id = id;
 		this.viberId = viberId;
 		this.name = name;

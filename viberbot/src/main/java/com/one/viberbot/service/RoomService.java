@@ -19,11 +19,11 @@ public class RoomService {
 	}
 	
 	public void addRoom(Room room) {
-		roomRepository.add(room);
+		//roomRepository.add(room);
 	}
 	
 	public void updateRoom(Room room) {
-		roomRepository.update(room);
+		//roomRepository.update(room);
 	}
 	
 	public Room getOneRoom(Integer id) {
@@ -31,6 +31,6 @@ public class RoomService {
 	}
 	
 	public void deleteRoom(Integer id) {
-		   roomRepository.delete(id);
-		}
+	   //roomRepository.delete(id);
+	}
 }
