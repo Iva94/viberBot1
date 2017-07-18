@@ -16,13 +16,13 @@ public class Room implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(name = "room_id")
 	private Integer id;
 	
-	@Column(name = "number")
+	
 	private String number;
 	
-	@Column(name = "name")
+	
 	private String name;
 	
 	public Room() {
