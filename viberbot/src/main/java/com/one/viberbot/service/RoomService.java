@@ -18,4 +18,19 @@ public class RoomService {
 		return roomRepository.findAll();
 	}
 	
+	public void addRoom(Room room) {
+		roomRepository.add(room);
+	}
+	
+	public void updateRoom(Room room) {
+		roomRepository.update(room);
+	}
+	
+	public Room getOneRoom(int id) {
+	   return roomRepository.findOne(id);
+	}
+	
+	public void deleteRoom(int id) {
+		   roomRepository.delete(id);
+		}
 }

@@ -15,6 +15,10 @@ public interface RoomRepository extends Repository<Room, Integer>{
 	boolean exists(Integer primaryKey);
 	public List<Room> findAll();
 	Room findOne(Integer id);
+	public void add(Room room);
+	public void update(Room room);
+	public void delete(Integer id);
+	
 	
 	/*@Transactional
 	@Modifying
