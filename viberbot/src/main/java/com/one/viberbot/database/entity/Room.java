@@ -16,7 +16,6 @@ public class Room implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "room_id")
 	private Integer id;
 	
 	

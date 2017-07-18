@@ -23,11 +23,11 @@ public class Reservation implements Serializable{
 	private Integer id;
 	
 	@ManyToOne(targetEntity = User.class)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user")
 	private User user;
-		
+	
 	@ManyToOne(targetEntity = Room.class)
-	@JoinColumn(name = "room_id")
+	@JoinColumn(name = "room")
 	private Room room;
 	
 	private Date date;
