@@ -12,31 +12,47 @@
 
 
 <body>
+
+
+<div class="container-fluid">
+ 
+  <div class="row">
+     <h2 id="title">Rooms</h2>
+  </div>
+
+<div class="row">
+
   <table class="table">
-  
   <thead>
       <tr>
-        <th><h4>Room</h4></th>
-        <th><h4>Name</h4></th>
-        <th><h4>Number</h4></th>
-        <th><h4>Action</h4></th>
+     
+       <th><h4>Name</h4></th>
+       <th><h4>Number</h4></th>
+       <th><h4>Actions</h4></th>
+ 
+       
       </tr>
     </thead>
+    
     <tbody>
        <tr th:each="room : ${rooms}">
-	   
-	    <td th:text="${room.id}">1</td>
-	   
-	    <td><a href="#" th:text="${room.number}"></a></td>
-	   
-	    <td th:text="${room.name}"></td>
-	    
-	    <td><a class="but" href="/room/delete/${room.id}">Delete</a> </td>
-	    
-	    
-	</tr>
+       
+        
+         <td th:text="${room.name}"></td>
+         <td><a href="#" th:text="${room.number}"></a></td>
+         <td><a class="but" th:href="@{/edit}">Edit</a> <a class="but" th:href="@{/room/delete/${room.id}}">Delete</a></td>
+      
+        
+  
+	   </tr>
+		   
     </tbody>
    
  </table>
+ </div>
+ 
+<a class="but" id="Add" href="/room/add/${room}">Add</a> <!-- NISAM SIGURNA -->
+ 
+</div>
 </body>
 </html>
