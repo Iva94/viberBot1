@@ -26,11 +26,11 @@ public class RoomService {
 		roomRepository.update(room);
 	}
 	
-	public Room getOneRoom(int id) {
+	public Room getOneRoom(Integer id) {
 	   return roomRepository.findOne(id);
 	}
 	
-	public void deleteRoom(int id) {
+	public void deleteRoom(Integer id) {
 		   roomRepository.delete(id);
 		}
 }

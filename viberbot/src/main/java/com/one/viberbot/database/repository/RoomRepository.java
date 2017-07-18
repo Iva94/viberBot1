@@ -18,11 +18,4 @@ public interface RoomRepository extends Repository<Room, Integer>{
 	public void add(Room room);
 	public void update(Room room);
 	public void delete(Integer id);
-	
-	
-	/*@Transactional
-	@Modifying
-	@Query("insert into rooms (number, name) values(:number, :name)")
-	public void addNewRoom(@Param("id") Integer id, 
-			@Param("number") String number, @Param("name") String name);*/
 }
