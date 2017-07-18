@@ -15,7 +15,17 @@ public interface RoomRepository extends Repository<Room, Integer>{
 	boolean exists(Integer primaryKey);
 	public List<Room> findAll();
 	Room findOne(Integer id);
-	//public void add(Room room);
-	//public void update(Room room);
-	//public void delete(Integer id);
+
+	@Transactional
+	@Modifying
+	@Query("insert into Room (id, number, name, startWorkTime, endWorkTime) values (:id, :number, :name, :startWorkTime, :endWorkTime)")
+	public void add(Room room);
+
+	
+	public void update(Room room);
+	
+	@Transactional
+	@Modifying
+	@Query("delete from Room where id = :id")
+	public void delete(Integer id);
 }

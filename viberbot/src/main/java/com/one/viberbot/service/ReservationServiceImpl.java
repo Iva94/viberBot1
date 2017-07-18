@@ -24,7 +24,7 @@ public class ReservationServiceImpl {
 		reservationService.edit(reservation);
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		reservationService.delete(id);
 	}
 
