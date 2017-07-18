@@ -13,15 +13,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     //@Autowired
     //private AccessDeniedHandler accessDeniedHandler;
 
-    // roles admin allow to access /admin/**
-    // roles user allow to access /user/**
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
                 .authorizeRequests()
-					.antMatchers("/", "/home", "/rooms").permitAll()
+					.antMatchers("/", "/login").permitAll()
 					.antMatchers("/administration/**").hasAnyRole("ADMIN")
 					.anyRequest().authenticated()
                 .and()
@@ -33,13 +31,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 					.permitAll();
     }
 
-    // create two users, admin and user
+    
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
-                .and()
-                .withUser("admin").password("password").roles("ADMIN");
+            .withUser("admin").password("password").roles("ADMIN");
     }
 }
