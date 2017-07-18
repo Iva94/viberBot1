@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <tr th:each="room : ${rooms}">
+	    <td th:text="${room.id}">1</td>
+	    <td><a href="#" th:text="${room.number}"></a></td>
+	    <td th:text="${room.name}"></td>
+	</tr>
+</body>
+</html>
