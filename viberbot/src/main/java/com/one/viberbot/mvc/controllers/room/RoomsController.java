@@ -32,6 +32,11 @@ public class RoomsController {
 		roomService.add(new Room(number, name, startWorkTime, endWorkTime));
 	}
 	
+	@RequestMapping(value = "/rooms/add", method = RequestMethod.GET)
+	public String addView() {
+		return "room/add";
+	}
+	
 	@RequestMapping(value = "/rooms/update", method = RequestMethod.POST)
 	public void update(@RequestParam(value = "id") Long id,	
 					   @RequestParam(value = "number") String number,	

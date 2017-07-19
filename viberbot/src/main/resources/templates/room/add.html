@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rooms List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="utf-8"></meta>
+  	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  
+  	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="rooms.css"></link>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<div class="row">
+			<h2 id="title">Add new room</h2>
+		</div>
+	
+		<div class="row">
+			<form th:action="@{/addRoom}" method="post">
+			   
+			   	<input type="text" name="roomName" id="roomName" class="form-control" value="" placeholder="Room name"></input>
+			   	<input type="text" name="roomNumber" id="roomNumber" class="form-control" value="" placeholder="Room number"></input>
+			   	
+			   	<input type="text" name="startTime" id="startTime" class="form-control" value="" placeholder="Start time"></input>
+			   	
+			   	<div class="form-group">
+			   		
+			   		<div class="col-xs-9">
+			   			<select name="startTimeHour" class="form-control">
+							<option th:each="i : ${#numbers.sequence( 0, 11 )}" value="${ i+1 }">
+							   <p value="${ i+1 }" th:text="${ i+1 }"></p>
+							</option>
+						</select>
+			   		</div>
+			   		
+			   		<div class="col-xs-9">
+				   		<select name="startTimeType" class="form-control">
+							<option value="AM">AM</option>
+							<option value="PM">PM</option>
+						</select>
+			   		</div>   	
+			   		
+			   	</div>
+			   		   	
+			   	<div class="form-group">
+			   		<select name="endTimeHour" class="form-control">
+						<option th:each="i : ${#numbers.sequence( 0, 11 )}" value="${ i+1 }">
+						   <p value="${ i+1 }" th:text="${ i+1 }"></p>
+						</option>
+					</select>
+			   	
+			   		<select name="endTimeType" class="form-control">
+						<option value="AM">AM</option>
+						<option value="PM">PM</option>
+					</select>
+			   	</div>
+			   	
+				<input type="submit" name="submit-add-room" class="btn btn-success" value="Add Room"></input>
+				
+			</form> 
+		</div>
+	</div>
+</body>
+</html>
