@@ -41,8 +41,8 @@
        
         
          <td th:text="${user.id}"></td>
-         <td><a href="#" th:text="${room.number}"></a></td>
-         <td><a class="but" th:href="@{/edit}">Edit</a> <a class="but" th:href="@{/room/delete/${room.id}}">Delete</a></td>
+         <td><a href="#" th:text="${user.name}"></a></td>
+         <td><a href="#" th:text="${user.subscribed}"></a></td>
       
         
   
@@ -51,10 +51,7 @@
     </tbody>
    
  </table>
- </div>
- 
-<a class="but" id="Add" href="/room/add/${room}">Add</a> <!-- NISAM SIGURNA -->
- 
+</div>
 </div>
 </body>
 </html>
