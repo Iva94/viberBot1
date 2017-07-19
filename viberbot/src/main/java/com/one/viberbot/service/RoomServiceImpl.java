@@ -28,12 +28,12 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public Room getOne(Integer id) {
+	public Room getOne(Long id) {
 		return roomRepository.findOne(id);
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		roomRepository.delete(id);
 	}
 

@@ -1,0 +1,27 @@
+body {
+	margin: 0px;
+	background-image: url("http://www.nozeens.com/wp-content/uploads/2014/11/White-Wallpaper-Pattern-Hd-Background-8-HD-Wallpapers1.jpg");
+	background-attachment: fixed;
+	backgroung-position: center;
+	background-size: cover;
+} 
+
+.purpleBtn{
+	background-color: purple !important;
+	color: white;
+	margin-top: 8px;
+}
+
+#title
+{
+ 
+ color:#32005e;
+
+}
+
+.but
+{
+	color:#ffffff;
+	background-color:purple;
+	padding:10px;
+}

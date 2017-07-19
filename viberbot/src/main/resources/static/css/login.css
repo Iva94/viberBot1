@@ -94,3 +94,23 @@
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+
+.forgot-password
+{
+  color:#32005e;
+}  
+
+#login-form-link
+{
+  color:#32005e;
+}
+
+#register-form-link 
+   {
+  color:#32005e;
+} 
+
+.text-info
+{
+  color:#32005e;
+}

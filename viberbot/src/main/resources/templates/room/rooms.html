@@ -9,7 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
 	
 	<style>
 		
@@ -17,28 +17,23 @@
 		{
 			color:#ffffff;
 			background-color:purple;
-			padding:10px;
+			border: none;
 		}
-		
-		
-		body{
-		 
-		 background-image:url("http://www.nozeens.com/wp-content/uploads/2014/11/White-Wallpaper-Pattern-Hd-Background-8-HD-Wallpapers1.jpg"); !important;
-		 
-		 background-size: cover;
-		 object-fit:cover;
-		 width:100%;
-		 height:100%;
-		 
-		
-		}
-		
+				
 		#title
 	    {
 		 
 		 color:#32005e;
 		
 		}   
+		
+		.delete-form {
+			display: inline;
+			margin-left: 15px;
+			padding: 15px;
+			border: none;
+			
+		}
 	
 	</style>
 </head>
@@ -46,8 +41,35 @@
 
 <body> 
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a th:href="@{/dashboard}">Home</a></li>
+      	<li><a th:href="@{/rooms}">Rooms</a></li>
+  		<li><a th:href="@{/users}">Users</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        	<form class="logOut" th:action="@{/logout}" method="post">
+      			<input class="btn purpleBtn" type="submit" value="Sign Out"/>
+  			</form>
+  		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<div class="container-fluid" id="core">
+
+<div class="container" id="core">
 <div>
   <div class="row">
      <h2 id="title">Rooms</h2>
@@ -74,11 +96,13 @@
          <td th:text="${room.name}"></td>
          <td><a href="#" th:text="${room.number}"></a></td>
          <td>
-         <a class="but" th:href="@{/edit/editRoom}">Edit</a>
-         <a class="but" th:href="@{/room/delete/${room.id}}">Delete</a>
-         </td>
-      
-        
+         	<a class="but" th:href="@{/rooms/update/}+${room.id}">Edit</a>
+         
+	         <form th:action="@{/rooms/delete}" method="post" class="delete-form">
+	         	<input style="display:none" name="id" th:value="${room.id}"></input>
+	         	<input class="but" type="submit" value="Delete"></input>
+	         </form>
+         </td>       
   
 	   </tr>
 		   
@@ -87,7 +111,7 @@
  </table>
  </div>
  
-<a class="but" id="Add" th:href="@{/room/addRoom}">Add</a>
+<a class="but" id="Add" th:href="@{/rooms/add}">Add</a>
 </div> 
 </div>
 </body>
