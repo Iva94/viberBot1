@@ -1,37 +1,52 @@
 package com.one.viberbot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.one.viberbot.database.entity.AppUser;
+import com.one.viberbot.database.repository.UserRepository;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	public UserService userService;
-	
-	public void findAll() {
-		userService.findAll();
+	public UserRepository userRepository;
+
+	@Override
+	public Iterable<AppUser> findAll() {
+		return userRepository.findAll();
 	}
 
+	@Override
 	public void add(AppUser user) {
-		userService.add(user);
+		AppUser appuser = userRepository.findOne(user.getId());
+		
+		if(appuser != null && !appuser.getSubscribe())
+			userRepository.save(user);
 	}
 
+	@Override
 	public AppUser getByViberId(String viberId) {
-		AppUser user;
-		user = userService.getByViberId(viberId);
-		return user;
+		return userRepository.getByViberId(viberId);
 	}
 
+	@Override
 	public void subscribe(String viberId) {
-		userService.subscribe(viberId);
+		AppUser user = userRepository.getByViberId(viberId);
+		user.setSubscribe(true);
+		userRepository.save(user);
 	}
 
+	@Override
 	public void unsubscribe(String viberId) {
-		userService.unsubscribe(viberId);
+		AppUser user = userRepository.getByViberId(viberId);
+		user.setSubscribe(false);
+		userRepository.save(user);
 	}
 
+	@Override
 	public void delete(Long id) {
-		userService.delete(id);
+		userRepository.delete(id);
 	}
+
 }

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +19,7 @@ public class Reservation implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	
 	@ManyToOne(targetEntity = AppUser.class)
 	@JoinColumn(name = "appuser", referencedColumnName = "id")
@@ -33,11 +32,23 @@ public class Reservation implements Serializable{
 	private Date date;
 	private Time time;
 	
-	public Integer getId() {
+	public Reservation() {
+		
+	}
+
+	public Reservation(Long id, AppUser user, Room room, Date date, Time time){
+		this.id = id;
+		this.appuser = user;
+		this.room = room;
+		this.date = date;
+		this.time = time;
+	}
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -73,15 +84,4 @@ public class Reservation implements Serializable{
 		this.time = time;
 	}
 
-	public Reservation(){
-		
-	}
-
-	public Reservation(Integer id, AppUser user, Room room, Date date, Time time){
-		this.id = id;
-		this.appuser = user;
-		this.room = room;
-		this.date = date;
-		this.time = time;
-	}
 }

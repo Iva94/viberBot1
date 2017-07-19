@@ -2,8 +2,6 @@ package com.one.viberbot.database.entity;
 
 import java.io.Serializable;
 
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,18 +15,28 @@ public class AppUser implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	
 	private String viberId;
 	private String name;
 	private Boolean subscribe;
 
+	public AppUser() {
+		
+	}
 	
-	public Integer getId() {
+	public AppUser(Long id, String viberId, String name, Boolean subscribe){
+		this.id = id;
+		this.viberId = viberId;
+		this.name = name;
+		this.subscribe = subscribe;
+	}
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,17 +61,6 @@ public class AppUser implements Serializable {
 	}
 
 	public void setSubscribe(Boolean subscribe) {
-		this.subscribe = subscribe;
-	}
-	
-	public AppUser(){
-		
-	}
-	
-	public AppUser(Integer id, String viberId, String name, Boolean subscribe){
-		this.id = id;
-		this.viberId = viberId;
-		this.name = name;
 		this.subscribe = subscribe;
 	}
 
