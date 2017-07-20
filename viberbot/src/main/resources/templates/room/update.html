@@ -52,7 +52,7 @@
 	
 		<div class="row">
 			<form th:action="@{/rooms/update}" method="post">
-			   	<input type="text" name="id" value="${room.id}" style="display:none;"></input>
+			   	<input type="text" name="id" th:value="${room.id}" style="display:none;"></input>
 			   	
 			   	<input type="text" name="name" id="roomName" class="form-control" th:value="${room.name}" placeholder="Room name"></input>
 			   	<input type="text" name="number" id="roomNumber" class="form-control" th:value="${room.number}" placeholder="Room number"></input>

@@ -48,7 +48,7 @@ public class RoomsController {
 	}
 	
 	@RequestMapping(value = "/rooms/update", method = RequestMethod.POST)
-	public String update(@RequestParam(value = "id") Long id,
+	public String update(@RequestParam(value = "id") String id,
 				@RequestParam(value = "number") String number,	
 				@RequestParam(value = "name") String name,
 				@RequestParam(value = "startWorkTime") String startWorkTime,
@@ -57,7 +57,7 @@ public class RoomsController {
 		LocalTime startTime = LocalTime.parse(startWorkTime, DateTimeFormatter.ISO_LOCAL_TIME);
 		LocalTime endTime = LocalTime.parse(endWorkTime, DateTimeFormatter.ISO_LOCAL_TIME);
 		
-		roomService.update(new Room(id, number, name, startTime, endTime));
+		roomService.update(new Room(Long.parseLong(id), number, name, startTime, endTime));
 		model.addAttribute("rooms", roomService.findAll());
 		
 		return "room/rooms";
