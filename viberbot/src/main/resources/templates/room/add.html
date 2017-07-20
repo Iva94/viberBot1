@@ -10,6 +10,7 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<link rel="stylesheet" type="text/css" href="rooms.css"></link>
+  	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../css/main.css"></link>
 </head>
 
 
@@ -56,7 +57,7 @@
 			   	<input type="time" name="startWorkTime" id="startWorkTime" class="form-control" value="" placeholder="Start time"></input>
 			   	<input type="time" name="endWorkTime" id="endWorkTime" class="form-control" value="" placeholder="End time"></input>
 			   	
-				<input type="submit" name="submit-add-room" class="btn btn-success" value="Add Room"></input>
+				<input type="submit" name="submit-add-room" class="btn btn-success" id="add" value="Add Room"></input>
 				
 			</form> 
 		</div>

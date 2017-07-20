@@ -10,6 +10,7 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<link rel="stylesheet" type="text/css" href="rooms.css"></link>
+  	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
 </head>
 
 
@@ -59,7 +60,7 @@
 			   	<input type="time" name="startWorkTime" id="startWorkTime" class="form-control" th:value="${room.startWorkTime}" placeholder="Start time"></input>
 			   	<input type="time" name="endWorkTime" id="endWorkTime" class="form-control" th:value="${room.endWorkTime}" placeholder="End time"></input>
 			   	
-				<input type="submit" name="submit-edit-room" class="btn btn-success" value="Update Room"></input>
+				<input type="submit" name="submit-edit-room" class="btn btn-success" id="add" value="Update Room"></input>
 				
 			</form> 
 		</div>
