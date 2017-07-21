@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-  <head>
-        <title>Welcome!</title>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
-  </head>
-  
-  <style>
- 
-  #one
-{
-	padding:15px;
-	height:300px;
-	weith:auto;
-}
-  
-  </style>
- 
-<body>
+ 	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
+</head>
+
+<body> 
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -49,10 +41,38 @@
   </div>
 </nav>
 
-<div class="container">
-  <h1 class="text-left"> Admin panel dashboard </h1>
- <img  class="img-responsive center-block" id="one" src="http://www.visibilitymagazine.com/wp-content/uploads/2015/04/conference-attendee-e1430853833620.jpg" />
-</div>
 
+<div class="container">
+ 
+  <div class="row">
+     <h2 id="title">Users</h2>
+  </div>
+
+<div class="row">
+
+  <table class="table">
+  <thead>
+      <tr>
+     
+       <th><h4>Viber ID</h4></th>
+       <th><h4>Name</h4></th>
+       <th><h4>Subscribed</h4></th>
+ 
+      </tr>
+    </thead>
+    
+    <tbody>
+       <tr th:each="user : ${users}">
+               
+         <td th:text="${user.id}"></td>
+         <td><a href="#" th:text="${user.name}"></a></td>
+         <td><a href="#" th:text="${user.subscribed}"></a></td>      
+  
+	   </tr>
+    </tbody>
+   
+ </table>
+</div>
+</div>
 </body>
 </html>

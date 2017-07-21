@@ -5,14 +5,14 @@
 	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 }
 .panel-login>.panel-heading {
-	color: #00415e;
+	color: #32005e;
 	background-color: #fff;
 	border-color: #fff;
 	text-align:center;
 }
 .panel-login>.panel-heading a{
 	text-decoration: none;
-	color: #666;
+	color:#32005e;
 	font-weight: bold;
 	font-size: 15px;
 	-webkit-transition: all 0.1s linear;
@@ -20,7 +20,7 @@
 	transition: all 0.1s linear;
 }
 .panel-login>.panel-heading a.active{
-	color: #029f5b;
+	color: #32005e;
 	font-size: 18px;
 }
 .panel-login>.panel-heading hr{
@@ -69,12 +69,12 @@
 }
 .forgot-password {
 	text-decoration: underline;
-	color: #888;
+	color: #32005e;
 }
 .forgot-password:hover,
 .forgot-password:focus {
 	text-decoration: underline;
-	color: #666;
+	color: #32005e;
 }
 
 .btn-register {
@@ -93,4 +93,24 @@
 	color: #fff;
 	background-color: #1CA347;
 	border-color: #1CA347;
+}
+
+.forgot-password
+{
+  color:#32005e;
+}  
+
+#login-form-link
+{
+  color:#32005e;
+}
+
+#register-form-link 
+   {
+  color:#32005e;
+} 
+
+.text-info
+{
+  color:#32005e;
 }

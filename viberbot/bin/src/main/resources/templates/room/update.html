@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rooms List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="utf-8"></meta>
+  	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  
+  	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="rooms.css"></link>
+  	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
+</head>
+
+
+<body>
+	<nav class="navbar navbar-inverse"> <!--bla bla  -->
+  <div class="container-fluid">
+    <div class="navbar-header">
+    
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      
+    </div>
+    
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a th:href="@{/dashboard}">Home</a></li>
+      	<li><a th:href="@{/rooms}">Rooms</a></li>
+  		<li><a th:href="@{/users}">Users</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        	<form class="logOut" th:action="@{/logout}" method="post">
+      			<input class="btn purpleBtn" type="submit" value="Sign Out"/>
+  			</form>
+  		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+	<div class="container">
+	
+		<div class="row">
+			<h2 id="title">Add new room</h2>
+		</div>
+	
+		<div class="row">
+			<form th:action="@{/rooms/update}" method="post">
+			   	<input type="text" name="id" th:value="${room.id}" style="display:none;"></input>
+			   	
+			   	<input type="text" name="name" id="roomName" class="form-control" th:value="${room.name}" placeholder="Room name"></input>
+			   	<input type="text" name="number" id="roomNumber" class="form-control" th:value="${room.number}" placeholder="Room number"></input>
+			   	
+			   	<input type="time" name="startWorkTime" id="startWorkTime" class="form-control" th:value="${room.startWorkTime}" placeholder="Start time"></input>
+			   	<input type="time" name="endWorkTime" id="endWorkTime" class="form-control" th:value="${room.endWorkTime}" placeholder="End time"></input>
+			   	
+				<input type="submit" name="submit-edit-room" class="btn btn-success" id="add" value="Update Room"></input>
+				
+			</form> 
+		</div>
+	</div>
+</body>
+</html>
