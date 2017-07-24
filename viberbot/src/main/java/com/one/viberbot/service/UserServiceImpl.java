@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	public void add(AppUser user) {
 		AppUser appuser = userRepository.findOne(user.getId());
 		
-		if(appuser != null && !appuser.getSubscribe())
+		if(appuser == null)
 			userRepository.save(user);
 	}
 

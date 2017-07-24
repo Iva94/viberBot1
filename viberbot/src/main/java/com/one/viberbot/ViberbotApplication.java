@@ -40,6 +40,5 @@ public class ViberbotApplication implements ApplicationListener<ApplicationReady
         
         bot.onConversationStarted(event -> viberService.onConversationStarted(event));
     }
-	
-	
+
 }

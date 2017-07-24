@@ -6,9 +6,13 @@ import com.google.common.io.CharStreams;
 import com.viber.bot.Request;
 import com.viber.bot.ViberSignatureValidator;
 import com.viber.bot.api.ViberBot;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Nullable;
@@ -16,6 +20,10 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -35,5 +43,5 @@ public class ViberBotController {
         @Nullable InputStream response = bot.incoming(Request.fromJsonString(json)).get();
         return response != null ? CharStreams.toString(new InputStreamReader(response, Charsets.UTF_16)) : null;
     }
-	
+
 }

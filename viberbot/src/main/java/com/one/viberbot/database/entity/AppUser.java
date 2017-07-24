@@ -32,6 +32,12 @@ public class AppUser implements Serializable {
 		this.subscribe = subscribe;
 	}
 	
+	public AppUser(String viberId, String name, Boolean subscribe){
+		this.viberId = viberId;
+		this.name = name;
+		this.subscribe = subscribe;
+	}
+	
 	public Long getId() {
 		return id;
 	}
