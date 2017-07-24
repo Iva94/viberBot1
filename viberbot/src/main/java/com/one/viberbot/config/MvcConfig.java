@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@EnableAutoConfiguration 
+//@EnableAutoConfiguration 
 public class MvcConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
@@ -17,7 +17,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/rooms/all").setViewName("room/rooms");
         registry.addViewController("/rooms/add").setViewName("room/add");
         registry.addViewController("/rooms/update").setViewName("room/update");
-        
+        registry.addViewController("/reservations").setViewName("reservations/reservations");
         registry.addViewController("/users").setViewName("users/users");
         registry.addViewController("/dashboard").setViewName("administration/dashboard");
         

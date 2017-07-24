@@ -2,6 +2,7 @@ package com.one.viberbot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.one.viberbot.database.entity.AppUser;
 import com.one.viberbot.database.repository.UserRepository;
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public void add(AppUser user) {
 		AppUser appuser = userRepository.findOne(user.getId());
 		
@@ -31,6 +33,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public void subscribe(String viberId) {
 		AppUser user = userRepository.getByViberId(viberId);
 		user.setSubscribe(true);

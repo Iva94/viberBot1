@@ -47,7 +47,7 @@ public class ViberBotServiceImpl implements ViberBotService {
 	public Future<Optional<Message>> onConversationStarted(IncomingConversationStartedEvent event) {
 		TextMessage message = new TextMessage("An error occurred, please try again later.");
 		
-		try {
+		try{
 			Map<String, Object> kbdMap = new HashMap<String, Object>();
 			
 			List<Map<String, Object>> buttons = new ArrayList<Map<String, Object>>();
@@ -83,10 +83,15 @@ public class ViberBotServiceImpl implements ViberBotService {
 			
 			MessageKeyboard keyboard = new MessageKeyboard(kbdMap);
 			
-			message = new TextMessage("Hello " + event.getUser().getName() + "!", keyboard, null, null);
+			Map<String, Object> trackingMap = new HashMap<String, Object>();
+			trackingMap.put("step", "1");
+			
+			TrackingData trackingData = new TrackingData(trackingMap);
+			
+			message = new TextMessage("Hello " + event.getUser().getName() + "!", keyboard, trackingData, null);
 		
-		} catch (Exception e) {
-			return Futures.immediateFuture(Optional.of(new TextMessage("Error! Try again later.")));
+		}catch(Exception e){
+			message = new TextMessage("Error! Please try again.");
 		}
 		
 		return Futures.immediateFuture(Optional.of(message));
@@ -112,21 +117,28 @@ public class ViberBotServiceImpl implements ViberBotService {
 	public void onMessageReceived(IncomingMessageEvent event, Message message, Response response) {
 		String sentMessage = message.getMapRepresentation().get("text").toString();
 		
-		if(sentMessage.equals("Hi bot")) {
-			TextMessage responseMessage = new TextMessage("Hello bot user!");
-			
-			response.send(responseMessage);
+		String tracking = message.getTrackingData().get("step").toString();
+		
+		if(tracking.equals("1")){
+			if(sentMessage.equals("Make a reservation")){
+				TextMessage responseMessage = new TextMessage("Please enter a date for a reservation (format: dd.mm.yyyy)");
+				
+				
+				
+				response.send(responseMessage);
+			}
+			else if(sentMessage.equals("View all reservations")){
+				TextMessage responseMessage = new TextMessage("Viewing all reservations...");
+				
+				response.send(responseMessage);
+			}
+			else{
+				TextMessage responseMessage = new TextMessage("Show options again.");
+				
+				response.send(responseMessage);
+			}
 		}
-		else if(sentMessage.equals("Make a reservation")) {
-			TextMessage responseMessage = new TextMessage("Making reservation...");
-			
-			response.send(responseMessage);
-		}
-		else if(sentMessage.equals("View all reservations")) {
-			TextMessage responseMessage = new TextMessage("Viewing all reservations...");
-			
-			response.send(responseMessage);
-		}
+		
 	}
 	
 }
