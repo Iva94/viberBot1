@@ -18,11 +18,11 @@ import com.one.viberbot.service.ReservationServiceImpl;
 public class ReservationsController {
 	
 	@Autowired
-	private ReservationServiceImpl reservationService;
+	private ReservationService reservationService;
 	
 	@RequestMapping(value = "/reservations", method = RequestMethod.GET)
 	public String reservationsView(Model model) {
-		model.addAttribute("reservation",reservationService.getAll());
+		model.addAttribute("reservations", reservationService.getAll());
 		return "reservations/reservations";
 	}
 
