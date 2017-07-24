@@ -11,7 +11,9 @@ import com.one.viberbot.service.ReservationServiceImpl;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/") 
+
+//proba proba
 
 public class ReservationsController {
 	
