@@ -13,32 +13,13 @@ import javax.inject.Inject;
 
 
 @SpringBootApplication
-public class ViberbotApplication implements ApplicationListener<ApplicationReadyEvent>{
+public class ViberbotApplication {
 
-	@Inject
-	private ViberBot bot;
-	
-	@Value("${application.viber-bot.webhook-url}")
-	private String webhookUrl;
-	
-	@Autowired 
-	private ViberBotServiceImpl viberService;
-	
 	public static void main(String[] args) {
 		SpringApplication.run(ViberbotApplication.class, args);
 	}
 	
-	@Override
-	public void onApplicationEvent(ApplicationReadyEvent appReadyEvent) {
-        try {
-            bot.setWebhook(webhookUrl).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        bot.onMessageReceived((event, message, response) -> viberService.onMessageReceived(event, message, response));
-        
-        bot.onConversationStarted(event -> viberService.onConversationStarted(event));
+	
     }
 
-}
+
