@@ -1,5 +1,8 @@
 package com.one.viberbot.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,6 +16,7 @@ import javax.annotation.Nonnull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Service;
 
 import com.google.common.util.concurrent.Futures;
@@ -39,8 +43,13 @@ public class ViberBotServiceImpl implements ViberBotService {
 	@Autowired 
 	private RoomServiceImpl roomService;
 	
+	@Autowired 
+	private ReservationService reservationService;
+	
 	@Autowired
 	private UserServiceImpl userService;
+	
+	private LocalDate date;
 	
 	
 	@Override
@@ -122,9 +131,9 @@ public class ViberBotServiceImpl implements ViberBotService {
 		if(tracking.equals("1")){
 			if(sentMessage.equals("Make a reservation")){
 				TextMessage responseMessage = new TextMessage("Please enter a date for a reservation (format: dd.mm.yyyy)");
-				
-				
-				
+				Map<String, Object> trackingMap = new HashMap<String, Object>();
+				trackingMap.put("step", "Enter date");
+				TrackingData trackingData = new TrackingData(trackingMap);
 				response.send(responseMessage);
 			}
 			else if(sentMessage.equals("View all reservations")){
@@ -138,6 +147,35 @@ public class ViberBotServiceImpl implements ViberBotService {
 				response.send(responseMessage);
 			}
 		}
+		
+		else if(tracking.equals("Enter date"))
+		{
+			try{
+				date = LocalDate.parse(sentMessage, DateTimeFormatter.ISO_LOCAL_DATE);				
+			}
+			catch(Exception e)
+			{	
+				message = new TextMessage("Error! Please try again.");
+			}
+			TextMessage responseMessage = new TextMessage("Please enter room number for a reservation!");
+			//responseMessage = new TextMessage(roomService.findAll().toString());
+			
+			
+			
+			Map<String, Object> trackingMap = new HashMap<String, Object>();
+			trackingMap.put("step", "Select room");
+			TrackingData trackingData = new TrackingData(trackingMap);
+			response.send(responseMessage);
+		}
+		else if(tracking.equals("Select room"))
+		{
+			Long roomId = Long.valueOf(sentMessage);
+			TextMessage responseMessage = new TextMessage(reservationService.getFreeRoomCapacitiesOnDate(roomId, date).toString());
+			
+			response.send(responseMessage);
+		}
+
+		
 		
 	}
 	
