@@ -20,7 +20,7 @@ public class RoomsController {
 	@Autowired
 	private RoomService roomService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String findAll(Model model) {
 		model.addAttribute("rooms", roomService.findAll());
 		return "room/rooms";
@@ -39,7 +39,7 @@ public class RoomsController {
 		
 		roomService.add(new Room(number, name, startTime, endTime));
 		
-		return "redirect:/rooms";
+		return "redirect:/rooms/all";
 	}
 	
 	
@@ -61,7 +61,7 @@ public class RoomsController {
 		
 		roomService.update(new Room(Long.parseLong(id), number, name, startTime, endTime));
 				
-		return "redirect:/rooms";
+		return "redirect:/rooms/all";
 	}
 	
 	
@@ -77,6 +77,6 @@ public class RoomsController {
 		
 		roomService.delete(id);
 				
-		return "redirect:/rooms";
+		return "redirect:/rooms/all";
 	}
 }
