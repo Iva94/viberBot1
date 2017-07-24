@@ -3,8 +3,6 @@ package com.one.viberbot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
 @SpringBootApplication
 public class ViberbotApplication {
 
@@ -12,7 +10,4 @@ public class ViberbotApplication {
 		SpringApplication.run(ViberbotApplication.class, args);
 	}
 	
-	
-    }
-
-
+}
