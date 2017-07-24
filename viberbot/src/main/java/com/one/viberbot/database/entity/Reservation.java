@@ -2,8 +2,11 @@ package com.one.viberbot.database.entity;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,22 +24,25 @@ public class Reservation implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToOne(targetEntity = AppUser.class)
-	@JoinColumn(name = "appuser", referencedColumnName = "id")
+	@ManyToOne
+	@JoinColumn(name = "appuser")
 	private AppUser appuser;
 	
-	@ManyToOne(targetEntity = Room.class)
-	@JoinColumn(name = "room", referencedColumnName = "id")
+	@ManyToOne
+	@JoinColumn(name = "room")
 	private Room room;
 	
-	private Date date;
-	private Time time;
+	@Column(name="date")
+	private LocalDate date;
+	
+	@Column(name="time")
+	private LocalTime time;
 	
 	public Reservation() {
 		
 	}
 
-	public Reservation(Long id, AppUser user, Room room, Date date, Time time){
+	public Reservation(Long id, AppUser user, Room room, LocalDate date, LocalTime time){
 		this.id = id;
 		this.appuser = user;
 		this.room = room;
@@ -68,19 +74,19 @@ public class Reservation implements Serializable{
 		this.room = room;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
-	public Time getTime() {
+	public LocalTime getTime() {
 		return time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(LocalTime time) {
 		this.time = time;
 	}
 

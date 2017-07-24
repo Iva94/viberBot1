@@ -2,6 +2,7 @@ package com.one.viberbot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.one.viberbot.database.entity.Room;
 import com.one.viberbot.database.repository.RoomRepository;
@@ -18,11 +19,13 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
+	@Transactional
 	public void add(Room room) {
 		roomRepository.save(room);
 	}
 
 	@Override
+	@Transactional
 	public void update(Room room) {
 		roomRepository.save(room);
 	}

@@ -3,6 +3,7 @@ package com.one.viberbot.database.entity;
 import java.io.Serializable;
 import java.time.LocalTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +19,16 @@ public class Room implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String number;	
+	@Column(name="number", unique=true)
+	private String number;
+	
+	@Column(name="name")
 	private String name;
+	
+	@Column(name="start_work_time")
 	private LocalTime startWorkTime;
+	
+	@Column(name="end_work_time")
 	private LocalTime endWorkTime;
 	
 	public Room() {
