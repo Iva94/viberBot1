@@ -9,31 +9,46 @@
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" type="text/css" href="rooms.css"></link>
   	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../css/main.css"></link>
 </head>
-
 
 <body>
 <div th:replace="fragments/fragments :: navbar"></div>
 <div class="container">
 
 	<div class="row">
-		<h2 id="title">Add new room</h2>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<h2 id="title">Add new room</h2>
+		</div>
 	</div>
 
 	<div class="row">
-		<form th:action="@{/rooms/add}" method="post">
-		   
-		   	<input type="text" name="name" id="roomName" class="form-control" value="" placeholder="Room name"></input>
-		   	<input type="text" name="number" id="roomNumber" class="form-control" value="" placeholder="Room number"></input>
-		   	
-		   	<input type="time" name="startWorkTime" id="startWorkTime" class="form-control" value="" placeholder="Start time"></input>
-		   	<input type="time" name="endWorkTime" id="endWorkTime" class="form-control" value="" placeholder="End time"></input>
-		   	
-			<input type="submit" name="submit-add-room" class="btn btn-success" id="add" value="Add Room"></input>
-			
-		</form> 
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<form th:action="@{/rooms/add}" method="post">
+				
+				<div class="form-group">
+					<label for="name">Room name</label>
+			   		<input th:required="required" type="text" name="name" id="name" class="form-control" value="" placeholder="Room name"></input>
+				</div>
+				
+				<div class="form-group">
+					<label for="number">Room number</label>
+			   		<input th:required="required" type="text" name="number" id="number" class="form-control" value="" placeholder="Room number"></input>
+				</div>
+				
+				<div class="form-group">
+					<label for="startWorkTime">Room start work time</label>
+			   		<input th:required="required" type="time" name="startWorkTime" id="startWorkTime" class="form-control" value="" placeholder="Start time"></input>
+				</div>
+				
+				<div class="form-group">
+					<label for="endWorkTime">Room end work time</label>
+			   		<input th:required="required" type="time" name="endWorkTime" id="endWorkTime" class="form-control" value="" placeholder="End time"></input>
+				</div>
+				   	
+				<input type="submit" name="submit-add-room" class="btn button" id="add" value="Add Room"></input>
+			</form>
+		</div>
 	</div>
 </div>
 </body>

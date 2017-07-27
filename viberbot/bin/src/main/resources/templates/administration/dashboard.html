@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-  <head>
-        <title>Welcome!</title>
+      
+<head>
+     <title>Welcome!</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
-  </head>
-  
-  <style>
- 
-  #one
+
+<style>
+#one
 {
 	padding:15px;
 	height:300px;
 	weith:auto;
 }
-  
-  </style>
- 
+</style>
+</head>
 <body>
 
-<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/fragments :: navbar"></div>
 
 <div class="container">
   <h1 class="text-center"> Welcome admin! </h1>

@@ -1,10 +1,8 @@
 package com.one.viberbot.database.entity;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,6 +48,13 @@ public class Reservation implements Serializable{
 		this.time = time;
 	}
 	
+	public Reservation(AppUser user, Room room, LocalDate date, LocalTime time){
+		this.appuser = user;
+		this.room = room;
+		this.date = date;
+		this.time = time;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -58,12 +63,12 @@ public class Reservation implements Serializable{
 		this.id = id;
 	}
 
-	public AppUser getUser() {
+	public AppUser getAppuser() {
 		return appuser;
 	}
 
-	public void setUser(AppUser user) {
-		this.appuser = user;
+	public void setAppuser(AppUser appuser) {
+		this.appuser = appuser;
 	}
 
 	public Room getRoom() {

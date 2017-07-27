@@ -11,10 +11,10 @@ import com.one.viberbot.database.entity.Reservation;
 
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 	
-	@Query("select time from Reservation where room = :roomId and date = :date")
+	@Query("select time from Reservation r where r.room.id = :roomId and r.date = :date")
 	public Iterable<LocalTime> getFreeRoomCapacitiesOnDate(@Param("roomId") Long roomId, @Param("date") LocalDate date);
 	
-	@Query("select r from Reservation r where r.appuser = (select u.id from AppUser u where u.viberId = :viberId)")
-	public Reservation getByUser(@Param("viberId") String viberId);
+	@Query("select r from Reservation r where r.appuser.viberId = :viberId")
+	public Iterable<Reservation> getByUser(@Param("viberId") String viberId);
 	
 }

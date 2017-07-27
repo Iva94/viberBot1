@@ -17,35 +17,31 @@
 <div th:replace="fragments/fragments :: navbar"></div>
 
 <div class="container">
-  <div class="row">
-     <h2 id="title">Users</h2>
-  </div>
-
-<div class="row">
-
-  <table class="table">
-  <thead>
-      <tr>
-     
-       <th><h4>Viber ID</h4></th>
-       <th><h4>Name</h4></th>
-       <th><h4>Subscribed</h4></th>
- 
-      </tr>
-    </thead>
-    
-    <tbody>
-       <tr th:each="user : ${users}">
-               
-         <td th:text="${user.id}"></td>
-         <td><a href="#" th:text="${user.name}"></a></td>
-         <td><a href="#" th:text="${user.subscribed}"></a></td>      
-  
-	   </tr>
-    </tbody>
-   
- </table>
-</div>
+	<div class="row">
+	   <h2 id="title">Users</h2>
+	</div>
+	
+	<div class="row">	
+		<div class="table-responsive col-md-12 col-sm-12 col-xs-12">
+			<table class="table">
+				<thead>
+					<tr>
+				   	<th><h4>Name</h4></th>
+				   	<th><h4>Viber ID</h4></th>
+					<th><h4>Subscribed</h4></th>
+				   	</tr>
+				</thead>
+			    
+			    <tbody>
+					<tr th:each="user : ${users}">
+			     	<td th:text="${user.name}"></td>
+			     	<td th:text="${user.viberId}"></td>
+			     	<td th:text="${user.subscribe}"></td>      
+					</tr>
+			    </tbody>
+		    </table>
+		</div>
+	</div>
 </div>
 </body>
 </html>

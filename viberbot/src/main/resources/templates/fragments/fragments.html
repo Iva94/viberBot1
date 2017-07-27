@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-	
-	<head th:fragment="header">
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
- 	</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
+</head>
  	
 <body>
 <div th:fragment="navbar">
 	<nav class="navbar navbar-inverse">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span> 
-	      </button>
-	      
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	      <ul class="nav navbar-nav">
-	        <li class="active"><a th:href="@{/dashboard}">Home</a></li>
-	      	<li><a th:href="@{/rooms/all}">Rooms</a></li>
-	  		<li><a th:href="@{/users}">Users</a></li>
-	  		<li><a th:href="@{/reservations}">Reservations</a></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li>
-	        	<form class="logOut" th:action="@{/logout}" method="post">
-	      			<input class="btn purpleBtn" type="submit" value="Sign Out"/>
-	  			</form>
-	  		</li>
-	      </ul>
-	    </div>
+	  <div class="container">
+		  <div class="row">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span> 
+		      </button>
+		      
+		    </div>
+		    <div class="collapse navbar-collapse" id="myNavbar">
+		      <ul class="nav navbar-nav">
+		      	<li th:classappend="${#httpServletRequest.getRequestURI() == '/rooms/all' ? 'active':''}"> <a th:href="@{/rooms/all}">Rooms</a></li>
+		  		<li th:classappend="${#httpServletRequest.getRequestURI() == '/users' ? 'active':''}"><a th:href="@{/users}">Users</a></li>
+		  		<li th:classappend="${#httpServletRequest.getRequestURI() == '/reservations' ? 'active':''}"><a th:href="@{/reservations}">Reservations</a></li>
+		      </ul>
+		      
+		      <ul class="nav navbar-nav navbar-right">
+		        <li>
+		        	<form class="logOut" th:action="@{/logout}" method="post">
+		      			<input class="btn logOutBtn" type="submit" value="Sign Out"/>
+		  			</form>
+		  		</li>
+		      </ul>
+		    </div>
+		  </div>
 	  </div>
 	</nav>
 </div>

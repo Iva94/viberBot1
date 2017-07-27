@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 
 import com.one.viberbot.service.ViberBotService;
-import com.one.viberbot.service.ViberBotServiceImpl;
 import com.viber.bot.api.ViberBot;
 
 @Configuration
@@ -34,6 +33,8 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
 
         bot.onMessageReceived((event, message, response) -> viberService.onMessageReceived(event, message, response));
         bot.onConversationStarted(event -> viberService.onConversationStarted(event));
+        bot.onSubscribe((event, response) -> viberService.onSubscribe(event, response));
+        bot.onUnsubscribe((event) -> viberService.onUnsubscribe(event));
     }
 
 }

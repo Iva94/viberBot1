@@ -1,35 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500');
+
 body {
 	margin: 0px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
 	background-image: url("http://www.nozeens.com/wp-content/uploads/2014/11/White-Wallpaper-Pattern-Hd-Background-8-HD-Wallpapers1.jpg");
 	background-attachment: fixed;
 	backgroung-position: center;
 	background-size: cover;
-} 
+}
 
-.purpleBtn{
-	background-color: purple !important;
+.purpleBtn {
+	background-color: #8f5db7 !important;
 	color: white;
 	margin-top: 8px;
 }
 
-#title
-{
- 
- color:#32005e;
-
+table tr {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
-.but
-{
-	color:#ffffff;
-	background-color:purple;
-	padding:10px;
+table td {
+	vertical-align: center;
 }
 
-#add
-{
-	
-	background-color:purple;
-	
+#title {
+	color:#32005e;
 }
 
+.navbar {
+	border-radius: 0px!important;
+}
+
+.logOutBtn {
+	background-color: transparent!important;
+	border: none!important;
+	color: #ffffff!important;
+	text-decoration:none;
+	margin-top: 8px;	
+}
+
+.button {
+	color: white !important;
+	background-color:#8f5db7;
+	margin-top: 8px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	border: none;
+	box-sizing: border-box;
+	font-size: 14px;
+	text-decoration: none !important;
+	height: 34px !important; 
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #8f5db7;
+    color: black !important;
+}
+
+
+.delete-form {
+	display: inline;
+	margin-top: 8px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	font-size: 14px;
+	border: none;
+    cursor: pointer;
+    height:34px;
+}

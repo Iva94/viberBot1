@@ -10,82 +10,52 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
-
-	<style>
-		
-		.but
-		{
-			color:#ffffff;
-			background-color:purple;
-			border: none;
-		}
-				
-		#title
-	    {
-		 
-		 color:#32005e;
-		
-		}   
-		
-		.delete-form {
-			display: inline;
-			margin-left: 15px;
-			padding: 15px;
-			border: none;
-			
-		}
-	
-	</style>
 </head>
 
-
 <body> 
-<div th:replace="fragments/fragments :: navbar"></div>
+	
+	<div th:replace="fragments/fragments :: navbar"></div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+		   		<h2 id="title">Rooms</h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="table-responsive col-md-12 col-sm-12 col-xs-12">
+				<table class="table">
+			 		<thead>
+			     		<tr>
+			     		<th><h4>Name</h4></th>
+			      		<th><h4>Number</h4></th>
+			      		<th><h4></h4></th>
+			     		</tr>
+				   	</thead>
+				   	<tbody>
+			      		<tr th:each="room : ${rooms}">
+				        	<td th:text="${room.name}"></td>
+				        	<td th:text="${room.number}"></td>
+				        	<td class="text-right">
+				         	<a class="btn button" id="edit" th:href="@{/rooms/update/}+${room.id}">Edit</a>
+					        <form th:action="@{/rooms/delete}" method="post" class="delete-form">
+					        	<input style="display:none" name="id" th:value="${room.id}"></input>
+					        	<input class="btn button" type="submit" value="Delete"></input>
+					        </form>
+				        	</td>
+				   		</tr>
+				    </tbody>
+			    </table>
+			</div>
+		</div>
+		
+		<div>
+			<div class="text-right" style="padding-right:20px;">
+				<a class="button" id="add" th:href="@{/rooms/add}">Add</a>
+			</div>
+		</div>
 
-<div class="container" id="core">
-<div>
-  <div class="row">
-     <h2 id="title">Rooms</h2>
-  </div>
-
-<div class="row">
-
-  <table class="table">
-  <thead>
-      <tr>
-     
-       <th><h4>Name</h4></th>
-       <th><h4>Number</h4></th>
-       <th><h4>Actions</h4></th>
- 
-       
-      </tr>
-    </thead>
-    
-    <tbody>
-       <tr th:each="room : ${rooms}">
-       
-        
-         <td th:text="${room.name}"></td>
-         <td><a href="#" th:text="${room.number}"></a></td>
-         <td>
-         	<a class="but" th:href="@{/rooms/update/}+${room.id}">Edit</a>
-         
-	         <form th:action="@{/rooms/delete}" method="post" class="delete-form">
-	         	<input style="display:none" name="id" th:value="${room.id}"></input>
-	         	<input class="but" type="submit" value="Delete"></input>
-	         </form>
-         </td>       
-  
-	   </tr>
-		   
-    </tbody>
-   
- </table>
- </div>
- 
-<a class="but" id="Add" th:href="@{/rooms/add}">Add</a>
-</div> 
-</div>
+	</div>
 </body>
 </html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
+  </head>
+
+
+<body>
+
+<div th:replace="fragments/fragments :: navbar"></div>
+
+<div class="container">
+ <div class="row">
+     <h2 id="title">Reservations</h2>
+  </div>
+
+<div class="row">
+
+  <table class="table">
+  <thead>
+      <tr>
+     
+       <th><h4>Date</h4></th>
+       <th><h4>Time</h4></th>
+       <th><h4>User</h4></th>
+       <th><h4>Room</h4></th>
+ 
+      </tr>
+  </thead>
+    
+    <tbody>
+       <tr th:each="reservation : ${reservations}">
+               
+         <td th:LocalDate="${reservation.date}"></td>
+         <td th:LocalTime="${reservation.time}"></td>
+         <td th:text="${reservation.appuser.name}"></td> 
+         <td th:text="${reservation.room.number}"></td>     
+  
+	   </tr>
+    </tbody>
+   
+ </table>
+</div>
+</div>
+
+</body>
+</html>

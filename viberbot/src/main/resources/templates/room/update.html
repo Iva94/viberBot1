@@ -15,27 +15,45 @@
 
 
 <body>
-
-<div th:replace="fragments/fragments :: navbar"></div>
-
-<div class="container">
-	<div class="row">
-			<h2 id="title">Add new room</h2>
-	</div>
 	
-	<div class="row">
-		<form th:action="@{/rooms/update}" method="post">
-		   	<input type="text" name="id" th:value="${room.id}" style="display:none;"></input>
-		   	
-		   	<input type="text" name="name" id="roomName" class="form-control" th:value="${room.name}" placeholder="Room name"></input>
-		   	<input type="text" name="number" id="roomNumber" class="form-control" th:value="${room.number}" placeholder="Room number"></input>
-		   	
-		   	<input type="time" name="startWorkTime" id="startWorkTime" class="form-control" th:value="${room.startWorkTime}" placeholder="Start time"></input>
-		   	<input type="time" name="endWorkTime" id="endWorkTime" class="form-control" th:value="${room.endWorkTime}" placeholder="End time"></input>
-		   	
-			<input type="submit" name="submit-edit-room" class="btn btn-success" id="add" value="Update Room"></input>
-		</form> 
+	<div th:replace="fragments/fragments :: navbar"></div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<h2 id="title">Add new room</h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<form th:action="@{/rooms/update}" method="post">
+				   	<input type="text" name="id" th:value="${room.id}" style="display:none;"></input>
+				   	
+				   	<div class="form-group">
+				   		<label for="name">Room name</label>
+				   		<input th:required="required" type="text" name="name" id="roomName" class="form-control" th:value="${room.name}" placeholder="Room name"></input>
+				   	</div>
+				   	
+				   	<div class="form-group">
+				   		<label for="number">Room number</label>
+				   		<input th:required="required" type="text" name="number" id="roomNumber" class="form-control" th:value="${room.number}" placeholder="Room number"></input>
+				   	</div>
+				   	
+				   	<div class="form-group">
+				   		<label for="startWorkTime">Room start work time</label>
+				   		<input th:required="required" type="time" name="startWorkTime" id="startWorkTime" class="form-control" th:value="${room.startWorkTime}" placeholder="Start time"></input>
+				   	</div>
+				   	
+				   	<div class="form-group">
+				   		<label for="endWorkTime">Room end work time</label>
+				   		<input th:required="required" type="time" name="endWorkTime" id="endWorkTime" class="form-control" th:value="${room.endWorkTime}" placeholder="End time"></input>
+				   	</div>
+				   	
+					<input type="submit" name="submit-edit-room" class="btn button" id="add" value="Update Room"></input>
+				</form> 
+			</div>
+		</div>
 	</div>
-</div>
 </body>
 </html>

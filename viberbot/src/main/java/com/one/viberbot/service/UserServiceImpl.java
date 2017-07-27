@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void add(AppUser user) {
-		AppUser appuser = userRepository.findOne(user.getId());
+		AppUser appuser = userRepository.getByViberId(user.getViberId());
 		
 		if(appuser == null)
 			userRepository.save(user);
@@ -36,8 +36,11 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void subscribe(String viberId) {
 		AppUser user = userRepository.getByViberId(viberId);
-		user.setSubscribe(true);
-		userRepository.save(user);
+		
+		if(user != null){
+			user.setSubscribe(true);
+			userRepository.save(user);	
+		}
 	}
 
 	@Override
